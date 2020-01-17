@@ -7,14 +7,20 @@ using namespace std;
 class Solution {
 public:
     int MoreThanHalfNum_Solution(vector<int> numbers) {
-        if (numbers.size() == 1) return numbers[0];
         unordered_map<int, int> numCnt;
         int maxNum, maxCnt = 0;
         for (int i = 0; i < numbers.size(); ++i)
         {
             unordered_map<int, int>::const_iterator got = numCnt.find(numbers[i]);
             if (got == numCnt.end())
+            {
                 numCnt.insert(pair<int, int>{numbers[i], 1});
+                if (maxCnt < 1)
+                {
+                    maxCnt = 1;
+                    maxNum = numbers[i];
+                }
+            }
             else
             {
                 numCnt.at(numbers[i]) = numCnt.at(numbers[i]) + 1;
@@ -40,6 +46,7 @@ int main()
     // vector <int> test2 = {1,2,3,2,4,2,5,2,3};
     // s.MoreThanHalfNum_Solution(test2);
     vector<int> test3 = {1};
+    cout << test3.size() << endl;
     s.MoreThanHalfNum_Solution(test3);
     return 0;
 }
