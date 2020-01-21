@@ -3,6 +3,8 @@
 #include <queue>
 
 using namespace std;
+/*
+* 最初的解法，较麻烦
 
 class Solution {
 public:
@@ -77,6 +79,21 @@ private:
         result.push(tmp);
         if (result.size() == beforeSize) *flag = false;
         return result;
+    }
+};
+*/
+
+class Solution {
+public:
+    int FindGreatestSumOfSubArray(vector<int> array) {
+        int maxNum = array[0];
+        int tmpSum = 0;
+        for (int i = 0; i < array.size(); ++i)
+        {
+            tmpSum = tmpSum < 0 ? array[i] : tmpSum + array[i];
+            maxNum = maxNum < tmpSum ? tmpSum : maxNum;
+        }
+        return maxNum;
     }
 };
 
