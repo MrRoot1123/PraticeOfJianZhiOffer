@@ -4,7 +4,7 @@
 using namespace std;
 
 class Solution {
-public://别人的代码就是牛逼
+public://别人的代码
     int GetUglyNumber_Solution(int index) {
         if (index < 7)return index;
         vector<int> res(index);
