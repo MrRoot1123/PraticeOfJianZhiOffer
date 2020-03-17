@@ -12,11 +12,11 @@ public:
         if (data.size() <= 0)
             return 0;
         vector<int> copy(data.begin(), data.end());
-        int count = InversePairsCore(data, copy, 0, data.size() - 1);
+        long long count = InversePairsCore(data, copy, 0, data.size() - 1);
         return (count % 1000000007);
     }
 private:
-    int InversePairsCore(vector<int> data, vector<int> copy, int start, int end) {
+    long long InversePairsCore(vector<int> &data, vector<int> &copy, int start, int end) {
         if (start == end) {
             copy[start] = data[start];
             return 0;
@@ -24,13 +24,13 @@ private:
         
         int length = (end - start) / 2;
         
-        int left = InversePairsCore(copy, data, start, start + length);
-        int right = InversePairsCore(copy, data, start + length + 1, end);
+        long long left = InversePairsCore(copy, data, start, start + length);
+        long long right = InversePairsCore(copy, data, start + length + 1, end);
         
         int i = start + length;
         int j = end;
         int indexCopy = end;
-        int count = 0;
+        long long count = 0;
         while(i >= start && j >= start + length + 1) {
             if (data[i] > data[j]) {
                 copy[indexCopy--] = data[i--];
